@@ -27,7 +27,7 @@ export default function Footer() {
         <Link href="/#courts">Explore courts</Link>
         <Link href="/information">Information</Link>
         <Link href="/games">All games</Link>
-        <Link href="/profile">Profile</Link>
+        <Link href="/profile">Dashboard</Link>
       </nav>
     </motion.footer>
   );

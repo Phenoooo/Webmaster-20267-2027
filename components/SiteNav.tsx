@@ -10,7 +10,7 @@ export default function SiteNav() {
         </Link>
         <nav aria-label="Main navigation" className="site-nav-links">
           <Link href="/information">Information</Link>
-          <Link href="/profile">Profile</Link>
+          <Link href="/profile">Dashboard</Link>
           <Link href="/games">All games</Link>
         </nav>
       </div>
