@@ -1,36 +1,25 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# The AI Courtroom
 
-## Getting Started
+An interactive site for practicing AI literacy through short courtroom scenarios.
 
-First, run the development server:
+## Development
 
-```bash
+```sh
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Use `npm run lint` for linting and `npm run build` to validate a production build.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project map
 
-## Learn More
+- `app/` contains route entry points and page-specific case scenarios.
+- `components/` contains shared navigation, court layouts, and home/game views.
+- `lib/courts.ts` defines court names, descriptions, skills, and routes.
+- `app/globals.css` holds shared design tokens, responsive styles, and image treatments.
+- `public/` contains the photos, illustration, and video used by the pages.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+To add or edit a court, update its details in `lib/courts.ts`, its scenario in
+`app/<court-route>/page.tsx`, and its artwork or photo rules in
+`components/CourtArtwork.tsx` and `app/globals.css`.
