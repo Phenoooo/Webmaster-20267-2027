@@ -267,8 +267,8 @@ export default function PromptingExperience() {
                         disabled={!unlocked}
                         onClick={() => startCase(caseItem)}
                       >
-                        <span className="pc-case-card-top"><small>CASE {caseItem.caseNumber}</small><b>{completed ? "✓ COMPLETE" : unlocked ? "OPEN FILE →" : "LOCKED"}</b></span>
-                        <span className="pc-case-card-number">0{caseItem.level}</span>
+                        <span className="pc-case-card-top"><small>CASE FILE</small><b>{completed ? "COMPLETE" : unlocked ? "OPEN FILE" : "LOCKED"}</b></span>
+                        <span className="pc-case-card-number">{caseItem.level}</span>
                         <strong>{caseItem.title}</strong>
                       </button>
                     );
@@ -285,7 +285,7 @@ export default function PromptingExperience() {
                     <h2>{activeCase.title}</h2>
                     <p>{activeCase.caseBrief}</p>
                   </div>
-                  <div className="pc-room-round"><span>ROUND</span><strong>01 <i>/</i> 01</strong><small>{turns.length} QUESTIONS ASKED</small></div>
+                  <div className="pc-room-round"><span>ROUND</span><strong>1 <i>/</i> 1</strong><small>{turns.length} QUESTIONS ASKED</small></div>
                 </div>
                 <div className="pc-scene-frame">
                   <Image
@@ -298,23 +298,16 @@ export default function PromptingExperience() {
                   />
                   <div className="pc-scene-shade" />
                   <div className="pc-scene-title"><span>THE CROSS-EXAMINATION</span><strong>Choose where to focus.</strong></div>
-                  <button className="pc-hotspot pc-hotspot-witness" type="button" onClick={() => setView("suspect")} aria-label="Open the witness statement">
-                    <span>01</span><strong>The Witness</strong><b>↗</b>
-                  </button>
-                  <button className="pc-hotspot pc-hotspot-paper" type="button" onClick={() => setView("pad")} aria-label="Open your legal pad">
-                    <span>02</span><strong>Your Legal Pad</strong><b>↗</b>
-                  </button>
-                  <button className="pc-hotspot pc-hotspot-judge" type="button" onClick={() => { setError(null); setView("judge"); }} disabled={turns.length === 0} aria-label="Go to the judge">
-                    <span>03</span><strong>The Judge</strong><b>↗</b>
-                  </button>
-                  <div className="pc-scene-footer"><span>THE PEOPLE VS. THE UNKNOWN ACCOUNT</span><span>YOU ARE COUNSEL</span></div>
+                  <button className="pc-hotspot pc-hotspot-witness" type="button" onClick={() => setView("suspect")}>Witness</button>
+                  <button className="pc-hotspot pc-hotspot-paper" type="button" onClick={() => setView("pad")}>Legal pad</button>
+                  <button className="pc-hotspot pc-hotspot-judge" type="button" onClick={() => { setError(null); setView("judge"); }} disabled={turns.length === 0}>Judge</button>
                 </div>
               </motion.section>
             )}
 
             {view === "suspect" && (
               <motion.section key="suspect" className="pc-interview-view" {...motionProps()}>
-                <div className="pc-view-topbar"><span>01 / WITNESS STAND</span><button type="button" onClick={returnToRoom}>← Return to courtroom</button></div>
+                <div className="pc-view-topbar"><span>WITNESS STAND</span><button type="button" onClick={returnToRoom}>← Return to courtroom</button></div>
                 <div className="pc-suspect-layout">
                   <div className="pc-witness-portrait">
                     <Image src="/realActTwo.jpg" alt="The witness seated at the courtroom stand." fill sizes="(max-width: 760px) 100vw, 44vw" className="pc-portrait-image" />
@@ -347,7 +340,7 @@ export default function PromptingExperience() {
 
             {view === "pad" && (
               <motion.section key="pad" className="pc-legal-pad-view" {...motionProps()}>
-                <div className="pc-view-topbar"><span>02 / COUNSEL'S DESK</span><button type="button" onClick={returnToRoom}>← Return to courtroom</button></div>
+                <div className="pc-view-topbar"><span>COUNSEL'S DESK</span><button type="button" onClick={returnToRoom}>← Return to courtroom</button></div>
                 <div className="pc-pad-layout">
                   <div className="pc-pad-sidebar">
                     <p className="pc-eyebrow">YOUR OBJECTIVE</p>
@@ -375,7 +368,7 @@ export default function PromptingExperience() {
 
             {view === "judge" && (
               <motion.section key="judge" className="pc-judge-view" {...motionProps()}>
-                <div className="pc-view-topbar"><span>03 / THE BENCH</span><button type="button" onClick={() => setView("pad")}>← Return to legal pad</button></div>
+                <div className="pc-view-topbar"><span>THE BENCH</span><button type="button" onClick={() => setView("pad")}>← Return to legal pad</button></div>
                 <div className="pc-judge-panel">
                   <div className="pc-judge-emblem">⚖</div>
                   <h2>Ready to hear <em>your case?</em></h2>

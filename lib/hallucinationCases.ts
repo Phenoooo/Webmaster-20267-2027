@@ -39,7 +39,7 @@ export const hallucinationCases: HallucinationCase[] = [
   {
     id: "lightning-repeat-strikes",
     level: 1,
-    caseNumber: "001",
+    caseNumber: "1",
     title: "The lightning repeat-strike claim",
     topic: "READING THE FULL CONTEXT",
     difficulty: "INTRODUCTORY",
@@ -88,7 +88,7 @@ export const hallucinationCases: HallucinationCase[] = [
   {
     id: "earth-seasons-distance",
     level: 2,
-    caseNumber: "002",
+    caseNumber: "2",
     title: "The distance-versus-seasons case",
     topic: "CORRELATION IS NOT CAUSATION",
     difficulty: "DEVELOPING",
@@ -137,7 +137,7 @@ export const hallucinationCases: HallucinationCase[] = [
   {
     id: "bats-and-vision",
     level: 3,
-    caseNumber: "003",
+    caseNumber: "3",
     title: "The bats-and-vision case",
     topic: "SELECTIVE EVIDENCE",
     difficulty: "DEVELOPING",
@@ -186,7 +186,7 @@ export const hallucinationCases: HallucinationCase[] = [
   {
     id: "great-wall-from-space",
     level: 4,
-    caseNumber: "004",
+    caseNumber: "4",
     title: "The Great Wall visibility case",
     topic: "MISSING QUALIFIERS",
     difficulty: "INTERMEDIATE",
@@ -237,7 +237,7 @@ export const hallucinationCases: HallucinationCase[] = [
   {
     id: "ten-percent-brain-myth",
     level: 5,
-    caseNumber: "005",
+    caseNumber: "5",
     title: "The ten-percent brain myth",
     topic: "QUANTIFIERS AND TIMING",
     difficulty: "INTERMEDIATE",
@@ -288,7 +288,7 @@ export const hallucinationCases: HallucinationCase[] = [
   {
     id: "antibiotics-and-colds",
     level: 6,
-    caseNumber: "006",
+    caseNumber: "6",
     title: "The antibiotics-and-colds case",
     topic: "EXCEPTIONS VERSUS THE RULE",
     difficulty: "CHALLENGE",

@@ -214,7 +214,7 @@ export default function StudentDashboard() {
   const reveal = (delay = 0) => ({
     initial: reduceMotion ? false : { opacity: 0, y: 14 },
     whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, amount: 0.12 },
+    viewport: { once: false, amount: 0.12 },
     transition: {
       duration: reduceMotion ? 0 : 0.45,
       delay: reduceMotion ? 0 : delay,
@@ -318,7 +318,7 @@ export default function StudentDashboard() {
           >
             <span className="db-rank-label">CURRENT RANK</span>
 
-            <strong>{String(dashboard.rankLevel).padStart(2, "0")}</strong>
+            <strong>{dashboard.rankLevel}</strong>
 
             <b>{dashboard.rankName}</b>
 

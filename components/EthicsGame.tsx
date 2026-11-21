@@ -107,8 +107,8 @@ export default function EthicsGame() {
           </div>
           <div className="ec-case-stamp" aria-label={`Level ${currentLevel}, one round`}>
             <span>THE ETHICS DOCKET</span>
-            <strong>CASE {currentCase.caseNumber}</strong>
-            <small>LEVEL {String(currentLevel).padStart(2, "0")} · ROUND 01 / 01</small>
+            <strong>LEVEL {currentLevel}</strong>
+            <small>ROUND 1 / 1</small>
           </div>
         </div>
       </section>
@@ -144,7 +144,7 @@ export default function EthicsGame() {
                     disabled={!unlocked}
                     aria-current={current ? "step" : undefined}
                   >
-                    <span className="ec-level-number">{completed ? "✓" : !unlocked ? "⌑" : String(caseItem.level).padStart(2, "0")}</span>
+                    <span className="ec-level-number">{completed ? "✓" : !unlocked ? "⌑" : caseItem.level}</span>
                     <span className="ec-level-copy"><strong>{caseItem.title.replace("The ", "")}</strong></span>
                     {current ? <span className="ec-current-mark">CURRENT</span> : null}
                   </button>
@@ -155,7 +155,7 @@ export default function EthicsGame() {
 
           <div className="ec-case-intro">
             <div>
-              <p className="ec-kicker">LEVEL {String(currentLevel).padStart(2, "0")} · {currentCase.topic.toUpperCase()}</p>
+              <p className="ec-kicker">LEVEL {currentLevel} · {currentCase.topic.toUpperCase()}</p>
               <h2>{currentCase.title.split(" ").slice(0, -1).join(" ")}<br /><em>{currentCase.title.split(" ").slice(-1).join("")}</em></h2>
               <p className="ec-context">{currentCase.context}</p>
             </div>
@@ -177,7 +177,7 @@ export default function EthicsGame() {
                   <motion.div key={`${currentCase.id}-arguments`} className="ec-dialogue-grid" initial={animate ? { opacity: 0 } : false} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: reduceMotion ? 0 : 0.25 }}>
                     {orderedArguments.map((argument, index) => (
                       <motion.article key={argument.id} className={`ec-speech-bubble ${index === 0 ? "is-left" : "is-right"}`} initial={animate ? { opacity: 0, y: 26, x: index === 0 ? -18 : 18 } : false} animate={{ opacity: 1, y: 0, x: 0 }} transition={{ duration: reduceMotion ? 0 : 0.52, delay: reduceMotion ? 0 : index * 0.28 }}>
-                        <div className="ec-speech-topline"><span>0{index + 1}</span><div><strong>{counselNames[index]}</strong><small>COUNSEL {index === 0 ? "A" : "B"}</small></div><b>“</b></div>
+                        <div className="ec-speech-topline"><span>{index + 1}</span><div><strong>{counselNames[index]}</strong><small>COUNSEL {index === 0 ? "A" : "B"}</small></div><b>“</b></div>
                         <p>{argument.text}</p>
                       </motion.article>
                     ))}
@@ -186,11 +186,10 @@ export default function EthicsGame() {
               </AnimatePresence>
               {stage === "brief" ? (
                 <motion.div className="ec-call-to-order" initial={animate ? { opacity: 0, y: 18 } : false} animate={{ opacity: 1, y: 0 }} transition={{ duration: reduceMotion ? 0 : 0.42 }}>
-                  <span>⚖</span><p>Two lawyers are ready to make their case.</p>
-                  <button className="ec-button ec-button-green" type="button" onClick={beginHearing}>Open the ethics hearing <b>→</b></button>
+                  <button className="ec-button ec-button-green" type="button" onClick={beginHearing}>Open the ethics hearing</button>
                 </motion.div>
               ) : null}
-              {stage === "arguments" ? <motion.div className="ec-scene-next" initial={animate ? { opacity: 0, y: 12 } : false} animate={{ opacity: 1, y: 0 }} transition={{ duration: reduceMotion ? 0 : 0.36, delay: reduceMotion ? 0 : 0.72 }}><button className="ec-button ec-button-green" type="button" onClick={() => setStage("evidence")}>Review the principles <b>→</b></button></motion.div> : null}
+              {stage === "arguments" ? <motion.div className="ec-scene-next" initial={animate ? { opacity: 0, y: 12 } : false} animate={{ opacity: 1, y: 0 }} transition={{ duration: reduceMotion ? 0 : 0.36, delay: reduceMotion ? 0 : 0.72 }}><button className="ec-button ec-button-green" type="button" onClick={() => setStage("evidence")}>Review the principles</button></motion.div> : null}
               {stage === "evidence" || stage === "verdict" ? <div className="ec-evidence-seal"><span>ETHICAL</span><strong>REVIEW</strong></div> : null}
             </div>
           </div>
@@ -202,7 +201,7 @@ export default function EthicsGame() {
                 <div className="ec-evidence-grid">
                   {currentCase.sources.map((source, index) => (
                     <article className="ec-exhibit-card" key={`${source.title}-${index}`}>
-                      <div className="ec-exhibit-topline"><span>REFERENCE 0{index + 1}</span><span>ORIGINAL GUIDANCE</span></div>
+                      <div className="ec-exhibit-topline"><span>REFERENCE {index + 1}</span><span>ORIGINAL GUIDANCE</span></div>
                       <p className="ec-source-org">{source.organization}</p><h4>{source.title}</h4>
                       <blockquote>“{source.excerpt}”</blockquote><p className="ec-source-relevance">{source.relevance}</p>
                       <a href={source.url} target="_blank" rel="noreferrer">Read the specific source <span>↗</span></a>
@@ -221,7 +220,7 @@ export default function EthicsGame() {
                   <motion.div className={`ec-verdict-result ${isCorrect ? "is-correct" : "is-incorrect"}`} initial={animate ? { opacity: 0, y: 20 } : false} animate={{ opacity: 1, y: 0 }} transition={{ duration: reduceMotion ? 0 : 0.4 }} role="status" aria-live="polite">
                     <div className="ec-result-icon">{isCorrect ? "✓" : "×"}</div>
                     <div className="ec-result-copy"><p className="ec-kicker">{isCorrect ? "RULING · ETHICALLY SOUND" : "RULING · RECONSIDER THE PRINCIPLES"}</p><h3>{isCorrect ? currentCase.feedback.correctHeading : currentCase.feedback.incorrectHeading}</h3><p>{currentCase.feedback.explanation}</p><div className="ec-learning-note"><strong>{currentCase.feedback.skill}</strong><span>{currentCase.feedback.takeaway}</span></div><p className={`ec-save-note ${progressSaved === false ? "is-unsaved" : ""}`}>{progressSaved === false ? "Progress could not be saved in this browser." : "Your ethics-case result is saved in this browser for the future student dashboard."} No name or password is collected here.</p><div className="ec-result-actions"><button className="ec-button ec-button-dark" type="button" onClick={replayCase}>Replay this case ↻</button>{currentLevel < ethicsCases.length && highestUnlockedLevel > currentLevel ? <button className="ec-button ec-button-green" type="button" onClick={() => openLevel(currentLevel + 1)}>Next level →</button> : null}<Link href="/games">Return to all games →</Link></div></div>
-                    <aside className="ec-level-complete"><span>LEVEL {String(currentLevel).padStart(2, "0")}</span><strong>{isCorrect ? "1 / 1" : "0 / 1"}</strong><small>{isCorrect ? "CORRECT" : "ATTEMPT RECORDED"}</small><small>{completedCount} / {ethicsCases.length} COMPLETED</small></aside>
+                    <aside className="ec-level-complete"><span>LEVEL {currentLevel}</span><strong>{isCorrect ? "1 / 1" : "0 / 1"}</strong><small>{isCorrect ? "CORRECT" : "ATTEMPT RECORDED"}</small><small>{completedCount} / {ethicsCases.length} COMPLETED</small></aside>
                   </motion.div>
                 ) : null}
               </motion.section>

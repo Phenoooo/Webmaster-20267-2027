@@ -143,7 +143,6 @@ export default function CourtsHome() {
                 aria-hidden="true"
               />
             </div>
-            <figcaption>Good judgment starts with a good question.</figcaption>
           </figure>
         </RevealOnScroll>
       </section>

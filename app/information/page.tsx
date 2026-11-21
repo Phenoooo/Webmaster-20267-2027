@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect } from "react";
 import Footer from "@/components/Footer";
 import SiteNav from "@/components/SiteNav";
 import { courts } from "@/lib/courts";
@@ -87,6 +90,10 @@ const imageSources = [
 ];
 
 export default function InformationPage() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       <main>

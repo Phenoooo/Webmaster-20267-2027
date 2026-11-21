@@ -66,7 +66,7 @@ const source = (
 
 const hallucinationCases: HallucinationCase[] = [
   {
-    id: "sleep", level: 1, caseNumber: "001", title: "The Sleep Claim", topic: "Health", difficulty: "FOUNDATIONS",
+    id: "sleep", level: 1, caseNumber: "1", title: "The Sleep Claim", topic: "Health", difficulty: "FOUNDATIONS",
     caseContext: "Two summaries make competing claims about what sleep can do.", prompt: "Which claim is supported by the source?", correctArgumentId: "supported",
     arguments: [
       source("unsupported", "The source proves that one good night's sleep permanently repairs lost memory.", "The study examined short-term performance after sleep.", "It does not establish permanent repair or a universal effect.", "Sleep and memory research"),
@@ -75,7 +75,7 @@ const hallucinationCases: HallucinationCase[] = [
     feedback: { correctHeading: "The record supports this reading.", incorrectHeading: "That claim outruns the record.", correctExplanation: "The source describes a qualified relationship rather than a permanent or universal result.", incorrectExplanation: "The source discusses consolidation in a specific context, not permanent memory repair.", skill: "Watch the scope.", takeaway: "A plausible result is not automatically a universal one." },
   },
   {
-    id: "climate", level: 2, caseNumber: "002", title: "The Climate Claim", topic: "Climate", difficulty: "FOUNDATIONS",
+    id: "climate", level: 2, caseNumber: "2", title: "The Climate Claim", topic: "Climate", difficulty: "FOUNDATIONS",
     caseContext: "A temperature trend is being used to support two different conclusions.", prompt: "Which argument stays within the evidence?", correctArgumentId: "supported",
     arguments: [
       source("unsupported", "One cool month disproves long-term global warming.", "Short-term variability occurs within long-term climate trends.", "A single month cannot test a multi-decade trend.", "Climate change: vital signs", "NASA"),
@@ -84,7 +84,7 @@ const hallucinationCases: HallucinationCase[] = [
     feedback: { correctHeading: "The timescale matters.", incorrectHeading: "A short snapshot is not the whole record.", correctExplanation: "The supported argument distinguishes daily or monthly weather from climate trends.", incorrectExplanation: "The source explicitly warns that short-term variation cannot settle a long-term question.", skill: "Match the timescale.", takeaway: "Do not use a short observation to make a long-term claim." },
   },
   {
-    id: "antibiotics", level: 3, caseNumber: "003", title: "The Antibiotic Claim", topic: "Medicine", difficulty: "INTERMEDIATE",
+    id: "antibiotics", level: 3, caseNumber: "3", title: "The Antibiotic Claim", topic: "Medicine", difficulty: "INTERMEDIATE",
     caseContext: "The court must separate treatment of bacterial illness from treatment of every infection.", prompt: "Which counsel describes the evidence accurately?", correctArgumentId: "supported",
     arguments: [
       source("unsupported", "Antibiotics cure viral infections because they kill germs.", "Antibiotics are medicines that fight bacterial infections.", "The source specifically limits their action to bacteria.", "Antibiotic use and resistance", "CDC"),
@@ -93,7 +93,7 @@ const hallucinationCases: HallucinationCase[] = [
     feedback: { correctHeading: "The distinction is supported.", incorrectHeading: "The argument generalizes too far.", correctExplanation: "The source separates bacterial infections from viral infections.", incorrectExplanation: "The fact that antibiotics fight some germs does not mean they treat viruses.", skill: "Define the category.", takeaway: "Broad words like 'germs' can hide an important qualification." },
   },
   {
-    id: "history", level: 4, caseNumber: "004", title: "The History Claim", topic: "History", difficulty: "INTERMEDIATE",
+    id: "history", level: 4, caseNumber: "4", title: "The History Claim", topic: "History", difficulty: "INTERMEDIATE",
     caseContext: "A primary source is being asked to establish more than it actually records.", prompt: "Which lawyer respects the source's limits?", correctArgumentId: "supported",
     arguments: [
       source("unsupported", "A diary entry proves that everyone in the city shared the writer's opinion.", "The entry records the author's personal observations.", "A single perspective cannot represent an entire population.", "Primary sources", "National Archives"),
@@ -102,7 +102,7 @@ const hallucinationCases: HallucinationCase[] = [
     feedback: { correctHeading: "The source is being used carefully.", incorrectHeading: "One voice cannot stand for everyone.", correctExplanation: "The supported argument treats the diary as evidence of a perspective, not a census of opinion.", incorrectExplanation: "The source is firsthand, but it is still limited to its author and context.", skill: "Check representation.", takeaway: "A primary source is not automatically a complete source." },
   },
   {
-    id: "technology", level: 5, caseNumber: "005", title: "The Technology Claim", topic: "Technology", difficulty: "ADVANCED",
+    id: "technology", level: 5, caseNumber: "5", title: "The Technology Claim", topic: "Technology", difficulty: "ADVANCED",
     caseContext: "A study's observed association is being presented as a cause.", prompt: "Which conclusion avoids inventing causation?", correctArgumentId: "supported",
     arguments: [
       source("unsupported", "Because two variables appear together, one must cause the other.", "An association does not necessarily mean that one variable causes the other.", "The source explicitly cautions against this inference.", "Understanding research results", "National Institutes of Health"),
@@ -111,7 +111,7 @@ const hallucinationCases: HallucinationCase[] = [
     feedback: { correctHeading: "The conclusion is appropriately cautious.", incorrectHeading: "Association is not proof of cause.", correctExplanation: "The supported argument preserves the distinction between correlation and causation.", incorrectExplanation: "A relationship between measurements alone cannot establish why they occur together.", skill: "Separate correlation from causation.", takeaway: "Ask what the study design can actually prove." },
   },
   {
-    id: "space", level: 6, caseNumber: "006", title: "The Space Claim", topic: "Space", difficulty: "ADVANCED",
+    id: "space", level: 6, caseNumber: "6", title: "The Space Claim", topic: "Space", difficulty: "ADVANCED",
     caseContext: "A model's possibility is being confused with a confirmed discovery.", prompt: "Which argument states the evidence honestly?", correctArgumentId: "supported",
     arguments: [
       source("unsupported", "A theoretical model confirms that life exists beyond Earth.", "Models can help scientists test ideas and make predictions.", "A model is not direct confirmation of a discovery.", "How science works", "NASA"),
@@ -247,8 +247,8 @@ export default function HallucinationGame() {
           </div>
           <div className="hc-case-stamp" aria-label={`Level ${currentLevel}, one round`}>
             <span className="hc-stamp-label">NOW HEARING</span>
-            <strong>CASE {currentCase.caseNumber}</strong>
-            <span>LEVEL {String(currentLevel).padStart(2, "0")} <i /> ROUND 01 / 01</span>
+            <strong>LEVEL {currentLevel}</strong>
+            <span>ROUND 1 / 1</span>
           </div>
         </div>
       </section>
@@ -292,7 +292,7 @@ export default function HallucinationGame() {
                     aria-label={`Level ${caseItem.level}: ${caseItem.title}${isCompleted ? ", completed" : !isUnlocked ? ", locked" : ""}`}
                   >
                     <span className="hc-level-number">
-                      {isCompleted ? "✓" : !isUnlocked ? "⌑" : String(caseItem.level).padStart(2, "0")}
+                      {isCompleted ? "✓" : !isUnlocked ? "⌑" : caseItem.level}
                     </span>
                     <span className="hc-level-copy">
                       <strong>{caseItem.title.replace("The ", "")}</strong>
@@ -306,7 +306,7 @@ export default function HallucinationGame() {
 
           <div className="hc-case-intro-row">
             <div>
-              <p className="hc-section-kicker">LEVEL {String(currentLevel).padStart(2, "0")} · {currentCase.topic}</p>
+              <p className="hc-section-kicker">LEVEL {currentLevel} · {currentCase.topic}</p>
               <h2>{currentCase.title.split(" ").slice(0, -1).join(" ")}<br /><em>{currentCase.title.split(" ").slice(-1).join("")}</em></h2>
               <p className="hc-case-context">{currentCase.caseContext}</p>
             </div>
@@ -355,7 +355,7 @@ export default function HallucinationGame() {
                         transition={{ duration: reduceMotion ? 0 : 0.56, delay: reduceMotion ? 0 : index * 0.32, ease: [0.2, 0.8, 0.2, 1] }}
                       >
                         <div className="hc-speech-topline">
-                          <span className="hc-attorney-number">0{index + 1}</span>
+                          <span className="hc-attorney-number">{index + 1}</span>
                           <div>
                             <strong>{counselNames[index]}</strong>
                             <small>COUNSEL {index === 0 ? "A" : "B"}</small>
@@ -376,10 +376,8 @@ export default function HallucinationGame() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: reduceMotion ? 0 : 0.45, delay: reduceMotion ? 0 : 0.2 }}
                 >
-                  <span className="hc-call-icon" aria-hidden="true">§</span>
-                  <p>Two lawyers are ready to make their case.</p>
                   <button className="hc-button hc-button-green" type="button" onClick={beginHearing}>
-                    Call the court to order <span aria-hidden="true">→</span>
+                    Call the court to order
                   </button>
                 </motion.div>
               ) : null}
@@ -391,7 +389,7 @@ export default function HallucinationGame() {
                   transition={{ duration: reduceMotion ? 0 : 0.38, delay: reduceMotion ? 0 : 0.8 }}
                 >
                   <button className="hc-button hc-button-green" type="button" onClick={revealEvidence}>
-                    Examine the exhibits <span aria-hidden="true">→</span>
+                    Examine the exhibits
                   </button>
                 </motion.div>
               ) : null}
@@ -429,7 +427,7 @@ export default function HallucinationGame() {
                       transition={{ duration: reduceMotion ? 0 : 0.4, delay: reduceMotion ? 0 : 0.14 * index }}
                     >
                       <div className="hc-exhibit-topline">
-                        <span>EXHIBIT 0{index + 1}</span>
+                        <span>EXHIBIT {index + 1}</span>
                         <span className="hc-exhibit-type">ORIGINAL SOURCE</span>
                       </div>
                       <p className="hc-source-organization">{argument.sourceOrganization}</p>
@@ -508,7 +506,7 @@ export default function HallucinationGame() {
                       </div>
                     </div>
                     <div className="hc-level-complete">
-                      <span>LEVEL {String(currentLevel).padStart(2, "0")}</span>
+                      <span>LEVEL {currentLevel}</span>
                       <strong>{correct ? "1 / 1" : "0 / 1"}</strong>
                       <small>{correct ? "CORRECT" : "ATTEMPT RECORDED"}</small>
                       <small>{completedCount} OF {totalLevels} LEVELS OPENED</small>

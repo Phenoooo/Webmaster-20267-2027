@@ -20,7 +20,7 @@ export const promptingCases: PromptingCase[] = [
   {
     id: "arts-fair-cash",
     level: 1,
-    caseNumber: "PC-001",
+    caseNumber: "PC-1",
     title: "The Missing Sixty Dollars",
     category: "School Fundraiser",
     difficulty: "FOUNDATIONS",
@@ -36,7 +36,7 @@ export const promptingCases: PromptingCase[] = [
   {
     id: "robotics-demo",
     level: 2,
-    caseNumber: "PC-002",
+    caseNumber: "PC-2",
     title: "The Demo That Suddenly Failed",
     category: "Robotics Team",
     difficulty: "FOUNDATIONS",
@@ -52,7 +52,7 @@ export const promptingCases: PromptingCase[] = [
   {
     id: "lab-results",
     level: 3,
-    caseNumber: "PC-003",
+    caseNumber: "PC-3",
     title: "The Altered Lab Table",
     category: "Science Class",
     difficulty: "INTERMEDIATE",
@@ -68,7 +68,7 @@ export const promptingCases: PromptingCase[] = [
   {
     id: "newsletter-hours",
     level: 4,
-    caseNumber: "PC-004",
+    caseNumber: "PC-4",
     title: "The Newsletter That Got It Wrong",
     category: "Community Center",
     difficulty: "INTERMEDIATE",
@@ -84,7 +84,7 @@ export const promptingCases: PromptingCase[] = [
   {
     id: "survey-summary",
     level: 5,
-    caseNumber: "PC-005",
+    caseNumber: "PC-5",
     title: "The Survey With Two Answers",
     category: "Student Council",
     difficulty: "ADVANCED",
@@ -100,7 +100,7 @@ export const promptingCases: PromptingCase[] = [
   {
     id: "debate-citations",
     level: 6,
-    caseNumber: "PC-006",
+    caseNumber: "PC-6",
     title: "The Citation That Cannot Be Found",
     category: "Debate Research",
     difficulty: "ADVANCED",

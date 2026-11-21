@@ -36,7 +36,7 @@ export const ethicsCases: EthicsCase[] = [
   {
     id: "classroom-disclosure",
     level: 1,
-    caseNumber: "E-001",
+    caseNumber: "E-1",
     title: "The Assignment Disclosure",
     topic: "Academic integrity",
     difficulty: "FOUNDATIONS",
@@ -66,7 +66,7 @@ export const ethicsCases: EthicsCase[] = [
   {
     id: "student-record",
     level: 2,
-    caseNumber: "E-002",
+    caseNumber: "E-2",
     title: "The Student Record",
     topic: "Privacy",
     difficulty: "FOUNDATIONS",
@@ -103,7 +103,7 @@ export const ethicsCases: EthicsCase[] = [
   {
     id: "candidate-shortlist",
     level: 3,
-    caseNumber: "E-003",
+    caseNumber: "E-3",
     title: "The Candidate Shortlist",
     topic: "Fairness and bias",
     difficulty: "INTERMEDIATE",
@@ -140,7 +140,7 @@ export const ethicsCases: EthicsCase[] = [
   {
     id: "scholarship-vote",
     level: 4,
-    caseNumber: "E-004",
+    caseNumber: "E-4",
     title: "The Scholarship Vote",
     topic: "Human oversight",
     difficulty: "INTERMEDIATE",
@@ -170,7 +170,7 @@ export const ethicsCases: EthicsCase[] = [
   {
     id: "campaign-image",
     level: 5,
-    caseNumber: "E-005",
+    caseNumber: "E-5",
     title: "The Campaign Image",
     topic: "Transparency",
     difficulty: "ADVANCED",
@@ -207,7 +207,7 @@ export const ethicsCases: EthicsCase[] = [
   {
     id: "research-summary",
     level: 6,
-    caseNumber: "E-006",
+    caseNumber: "E-6",
     title: "The Research Summary",
     topic: "Information integrity",
     difficulty: "ADVANCED",
