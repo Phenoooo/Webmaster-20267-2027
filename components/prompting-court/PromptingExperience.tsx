@@ -69,12 +69,10 @@ function CaseProgressDots({ completed, current }: { completed: number[]; current
   );
 }
 
-function ViewHeading({ eyebrow, title, description }: { eyebrow: string; title: ReactNode; description: string }) {
+function ViewHeading({ title }: { title: ReactNode }) {
   return (
     <div className="pc-view-heading">
-      <p className="pc-eyebrow">{eyebrow}</p>
       <h2>{title}</h2>
-      <p>{description}</p>
     </div>
   );
 }
@@ -222,9 +220,7 @@ export default function PromptingExperience() {
       <section className="pc-masthead">
         <div className="pc-masthead-inner">
           <div>
-            <p className="pc-eyebrow"><span /> THE AI COURTROOM / PROMPTING DIVISION</p>
             <h1>Prompting <em>Court.</em></h1>
-            <p>You're the lawyer now. Ask carefully, follow the evidence, and persuade the witness to explain what really happened.</p>
           </div>
           <div className="pc-case-progress-card">
             <span>YOUR CASE PROGRESS</span>
@@ -250,11 +246,11 @@ export default function PromptingExperience() {
             {view === "briefing" && (
               <motion.section key="briefing" className="pc-briefing" {...motionProps()}>
                 <div className="pc-briefing-intro">
-                  <ViewHeading eyebrow="THE DOCKET" title={<>Choose your <em>case.</em></>} description="Each case has a witness, a set of facts, and a question that needs answering. Complete a cross-examination to unlock the next file." />
+                  <ViewHeading title={<>Choose your <em>case.</em></>} />
                   <div className="pc-rules-card">
-                    <span className="pc-gold-symbol">§</span>
+                    <span className="pc-court-symbol">§</span>
                     <strong>Your job as counsel</strong>
-                    <p>Ask up to eight questions. Be clear, use follow-ups, and request details that can be checked. The AI witness responds in character; the judge grades your questioning.</p>
+                    <p>Ask up to eight questions, then request the judge's verdict.</p>
                   </div>
                 </div>
                 <div className="pc-case-grid">
@@ -272,8 +268,6 @@ export default function PromptingExperience() {
                         <span className="pc-case-card-top"><small>CASE {caseItem.caseNumber}</small><b>{completed ? "✓ COMPLETE" : unlocked ? "OPEN FILE →" : "LOCKED"}</b></span>
                         <span className="pc-case-card-number">0{caseItem.level}</span>
                         <strong>{caseItem.title}</strong>
-                        <span className="pc-case-card-meta">{caseItem.category} <i>·</i> {caseItem.difficulty}</span>
-                        <span className="pc-case-card-objective">{caseItem.objective}</span>
                       </button>
                     );
                   })}
@@ -293,8 +287,8 @@ export default function PromptingExperience() {
                 </div>
                 <div className="pc-scene-frame">
                   <Image
-                    src="/prompting-courtroom-scene.png"
-                    alt="A realistic courtroom with a witness at the stand, a lawyer taking notes, and a judge presiding."
+                    src="/realActTwo.jpg"
+                    alt="A lawyer questions a witness in front of a judge in a wood-paneled courtroom."
                     fill
                     priority
                     sizes="(max-width: 900px) 100vw, 1200px"
@@ -303,17 +297,16 @@ export default function PromptingExperience() {
                   <div className="pc-scene-shade" />
                   <div className="pc-scene-title"><span>THE CROSS-EXAMINATION</span><strong>Choose where to focus.</strong></div>
                   <button className="pc-hotspot pc-hotspot-witness" type="button" onClick={() => setView("suspect")} aria-label="Open the witness statement">
-                    <span>01</span><strong>The Witness</strong><small>Hear their account</small><b>↗</b>
+                    <span>01</span><strong>The Witness</strong><b>↗</b>
                   </button>
                   <button className="pc-hotspot pc-hotspot-paper" type="button" onClick={() => setView("pad")} aria-label="Open your legal pad">
-                    <span>02</span><strong>Your Legal Pad</strong><small>{turns.length ? `${turns.length} questions recorded` : "Form your questions"}</small><b>↗</b>
+                    <span>02</span><strong>Your Legal Pad</strong><b>↗</b>
                   </button>
                   <button className="pc-hotspot pc-hotspot-judge" type="button" onClick={() => { setError(null); setView("judge"); }} disabled={turns.length === 0} aria-label="Go to the judge">
-                    <span>03</span><strong>The Judge</strong><small>{turns.length ? "Request your verdict" : "Ask a question first"}</small><b>↗</b>
+                    <span>03</span><strong>The Judge</strong><b>↗</b>
                   </button>
                   <div className="pc-scene-footer"><span>THE PEOPLE VS. THE UNKNOWN ACCOUNT</span><span>YOU ARE COUNSEL</span></div>
                 </div>
-                <div className="pc-room-tip"><span>COUNSEL'S NOTE</span> You can move between the witness, your legal pad, and the judge at any time. Your questions are preserved as you switch views.</div>
               </motion.section>
             )}
 
@@ -322,7 +315,7 @@ export default function PromptingExperience() {
                 <div className="pc-view-topbar"><span>01 / WITNESS STAND</span><button type="button" onClick={returnToRoom}>← Return to courtroom</button></div>
                 <div className="pc-suspect-layout">
                   <div className="pc-witness-portrait">
-                    <Image src="/prompting-courtroom-scene.png" alt="The witness seated at the courtroom stand." fill sizes="(max-width: 760px) 100vw, 44vw" className="pc-portrait-image" />
+                    <Image src="/realActTwo.jpg" alt="The witness seated at the courtroom stand." fill sizes="(max-width: 760px) 100vw, 44vw" className="pc-portrait-image" />
                     <div className="pc-portrait-label"><small>WITNESS FOR THIS CASE</small><strong>{activeCase.witnessName}</strong><span>{activeCase.witnessRole}</span></div>
                   </div>
                   <div className="pc-interview-copy">
@@ -363,7 +356,7 @@ export default function PromptingExperience() {
                   <div className="pc-paper-sheet">
                     <div className="pc-paper-head"><span>THE PEOPLE VS. THE UNKNOWN ACCOUNT</span><span>COUNSEL'S NOTES · {activeCase.caseNumber}</span></div>
                     <h2>Cross-examination <em>questions.</em></h2>
-                    <p className="pc-paper-instruction">Write one clear question at a time. The witness will answer, and you can use that response to decide what to ask next. Use only the fictional case details; do not enter real personal information.</p>
+                    <p className="pc-paper-instruction">Use fictional case details only. Do not enter real personal information.</p>
                     <form onSubmit={submitQuestion} className="pc-question-form">
                       <label htmlFor="pc-question">Your next question</label>
                       <textarea id="pc-question" value={question} onChange={(event: ChangeEvent<HTMLTextAreaElement>) => setQuestion(event.currentTarget.value)} maxLength={1200} rows={5} placeholder="For example: Can you walk me through what happened between the initial count and the final deposit?" disabled={suspectLoading || questionLimitReached} />
@@ -372,7 +365,7 @@ export default function PromptingExperience() {
                     {error && <p className="pc-error-message" role="alert">{error}</p>}
                     {turns.length > 0 && <div className="pc-notes-history"><h3>Questions already asked</h3>{turns.map((turn, index) => <article key={`${index}-${turn.question}`}><span>QUESTION {index + 1}</span><p>{turn.question}</p><small>Witness response received · {turn.revealedClueIds.length ? `${turn.revealedClueIds.length} new detail${turn.revealedClueIds.length === 1 ? "" : "s"} surfaced` : "No new details yet"}</small></article>)}</div>}
                     {questionLimitReached && <p className="pc-limit-note">You've used all eight questions. Return to the room when you're ready to ask the judge for a verdict.</p>}
-                    <div className="pc-paper-actions"><button type="button" className="pc-button pc-button-outline" onClick={() => setView("suspect")}>← Back to witness</button><button type="button" className="pc-button pc-button-gold" disabled={turns.length === 0} onClick={() => { setError(null); setView("judge"); }}>I'm ready for the judge →</button></div>
+                    <div className="pc-paper-actions"><button type="button" className="pc-button pc-button-outline" onClick={() => setView("suspect")}>← Back to witness</button><button type="button" className="pc-button pc-button-green" disabled={turns.length === 0} onClick={() => { setError(null); setView("judge"); }}>I'm ready for the judge →</button></div>
                   </div>
                 </div>
               </motion.section>
@@ -383,12 +376,10 @@ export default function PromptingExperience() {
                 <div className="pc-view-topbar"><span>03 / THE BENCH</span><button type="button" onClick={() => setView("pad")}>← Return to legal pad</button></div>
                 <div className="pc-judge-panel">
                   <div className="pc-judge-emblem">⚖</div>
-                  <p className="pc-eyebrow">THE COURT WILL NOW REVIEW THE RECORD</p>
                   <h2>Ready to hear <em>your case?</em></h2>
-                  <p className="pc-judge-summary">The judge will evaluate how you questioned the witness—not just whether you uncovered every detail. Your questions will be reviewed for clarity, relevance, follow-up, evidence reasoning, and respectful conduct.</p>
                   <div className="pc-judge-stats"><div><strong>{turns.length}</strong><span>QUESTIONS ASKED</span></div><div><strong>{turns.filter((turn) => turn.revealedClueIds.length > 0).length}</strong><span>ANSWERS WITH NEW DETAILS</span></div><div><strong>5</strong><span>GRADING DIMENSIONS</span></div></div>
                   {error && <p className="pc-error-message" role="alert">{error}</p>}
-                  <div className="pc-action-row pc-action-center"><button type="button" className="pc-button pc-button-outline" onClick={() => setView("pad")} disabled={judgeLoading}>Continue questioning</button><button type="button" className="pc-button pc-button-gold pc-verdict-submit" onClick={askJudge} disabled={judgeLoading || turns.length === 0}>{judgeLoading ? "The judge is reviewing…" : "Submit my case for a verdict →"}</button></div>
+                  <div className="pc-action-row pc-action-center"><button type="button" className="pc-button pc-button-outline" onClick={() => setView("pad")} disabled={judgeLoading}>Continue questioning</button><button type="button" className="pc-button pc-button-green pc-verdict-submit" onClick={askJudge} disabled={judgeLoading || turns.length === 0}>{judgeLoading ? "The judge is reviewing…" : "Submit my case for a verdict →"}</button></div>
                   <small className="pc-judge-footnote">AI-generated feedback is educational practice, not a formal assessment.</small>
                 </div>
               </motion.section>
