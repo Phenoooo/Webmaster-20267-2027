@@ -7,34 +7,41 @@ export type Court = {
   description: string;
   href: string;
   skill: string;
+  skillDescription: string;
 };
 
 export const courts: Court[] = [
   {
     id: "hallucination",
-    name: "Hallucination Court",
-    tagline: "The burden of proof",
+    name: "Hallucination court",
+    tagline: "The Burden of Proof",
     description:
-      "Spot unsupported claims and distinguish confident language from reliable evidence.",
+      "Understand why AI generates inaccurate information, learn to recognize hallucinations, and verify claims against reliable sources.",
     href: "/hallucination-court",
-    skill: "Verification",
+    skill: "Hallucinations",
+    skillDescription:
+      "Understanding when AI generates false, misleading, or unsupported information despite sounding confident. Students learn to fact-check AI responses, identify fabricated claims, and distinguish reliable information from misinformation.",
   },
   {
     id: "prompting",
-    name: "Prompting Court",
-    tagline: "Precision over presumption",
+    name: "Prompting court",
+    tagline: "Precision Over Presumption",
     description:
-      "Write clear prompts that give AI the context, role, and constraints it needs.",
+      "Learn to communicate effectively with AI by crafting precise prompts that provide clear instructions, context, and expectations.",
     href: "/prompting-court",
     skill: "Prompting",
+    skillDescription:
+      "Learning how to communicate effectively with AI through clear, specific, and structured instructions. Students develop skills to refine prompts, provide context, and generate more accurate and useful responses.",
   },
   {
     id: "ethics",
-    name: "Ethics Court",
-    tagline: "Responsible judgment",
+    name: "Ethics court",
+    tagline: "Responsible Judgment",
     description:
-      "Evaluate bias, privacy, ownership, and when human judgment must remain in control.",
+      "Examine the ethical challenges of AI, including bias, privacy, and intellectual property, and understand where human responsibility comes in.",
     href: "/ethics-court",
-    skill: "Ethical judgment",
+    skill: "Ethics",
+    skillDescription:
+      "Exploring the responsible use of AI and its impact on individuals and society. Students examine topics such as bias, privacy, academic integrity, copyright, and the consequences of relying on AI.",
   },
 ];

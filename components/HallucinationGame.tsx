@@ -6,6 +6,7 @@ import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useEffect, useMemo, useState } from "react";
 import Footer from "@/components/Footer";
 import SiteNav from "@/components/SiteNav";
+import AcquittalBrand from "@/components/AcquittalBrand";
 import {
   getStudentProgress,
   recordHallucinationResult,
@@ -249,7 +250,7 @@ export default function HallucinationGame() {
         <div className="hc-page-heading">
           <div className="hc-heading-copy">
             <p className="hc-eyebrow">
-              <span className="hc-eyebrow-dot" /> THE AI COURTROOM <span>/</span> EVIDENCE DIVISION
+              <span className="hc-eyebrow-dot" /> <AcquittalBrand /> <span>/</span> EVIDENCE DIVISION
             </p>
             <h1>
               Hallucination <em>Court.</em>
@@ -502,7 +503,7 @@ export default function HallucinationGame() {
                   >
                     <div className="hc-result-icon" aria-hidden="true">{correct ? "✓" : "✕"}</div>
                     <div className="hc-result-copy">
-                      <p className="hc-section-kicker">{correct ? "RULING: WELL REASONED" : "RULING: REVISIT THE RECORD"}</p>
+                      <p className="hc-section-kicker">{correct ? "RULING. WELL REASONED" : "RULING. REVISIT THE RECORD"}</p>
                       <h3>{correct ? currentCase.feedback.correctHeading : currentCase.feedback.incorrectHeading}</h3>
                       <p>{correct ? currentCase.feedback.correctExplanation : currentCase.feedback.incorrectExplanation}</p>
                       <div className="hc-learning-note">
@@ -540,7 +541,7 @@ export default function HallucinationGame() {
 
           <div className="hc-bottom-nav">
             <Link href="/" className="hc-text-link">← Back home</Link>
-            <span>THE AI COURTROOM <i>·</i> EVIDENCE DIVISION</span>
+            <span><AcquittalBrand /> <i>·</i> EVIDENCE DIVISION</span>
             <Link href="/games" className="hc-text-link">All games →</Link>
           </div>
         </div>

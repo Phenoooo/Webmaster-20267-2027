@@ -6,6 +6,7 @@ import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useEffect, useMemo, useState, type ChangeEvent, type CSSProperties, type FormEvent, type ReactNode } from "react";
 import SiteNav from "@/components/SiteNav";
 import Footer from "@/components/Footer";
+import AcquittalBrand from "@/components/AcquittalBrand";
 import { promptingCases, type PromptingCase } from "@/lib/prompting-court/cases";
 import {
   getStudentProgress,
@@ -222,7 +223,7 @@ export default function PromptingExperience() {
       <section className="pc-masthead">
         <div className="pc-masthead-inner">
           <div>
-            <p className="pc-eyebrow"><span /> THE AI COURTROOM / PROMPTING DIVISION</p>
+            <p className="pc-eyebrow"><span /> <AcquittalBrand /> / PROMPTING DIVISION</p>
             <h1>Prompting <em>Court.</em></h1>
             <p>You're the lawyer now. Ask carefully, follow the evidence, and persuade the witness to explain what really happened.</p>
           </div>
@@ -410,7 +411,7 @@ export default function PromptingExperience() {
             )}
           </AnimatePresence>
 
-          <div className="pc-bottom-links"><Link href="/">← Home</Link><span>THE AI COURTROOM · PROMPTING DIVISION</span><Link href="/games">All games →</Link></div>
+          <div className="pc-bottom-links"><Link href="/">← Home</Link><span><AcquittalBrand /> · PROMPTING DIVISION</span><Link href="/games">All games →</Link></div>
         </div>
       </section>
       <Footer />

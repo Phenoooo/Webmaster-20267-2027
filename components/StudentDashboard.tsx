@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState, type FormEvent } from "react";
 import Footer from "@/components/Footer";
 import SiteNav from "@/components/SiteNav";
+import AcquittalBrand from "@/components/AcquittalBrand";
 import {
   getStudentProgress,
   saveStudentProgress,
@@ -204,7 +205,7 @@ export default function StudentDashboard() {
   if (!progress || !dashboard) {
     return (
       <main className="dashboard-page">
-        <section className="dashboard-hero mahogany-section"><SiteNav /><div className="dashboard-hero-inner"><p className="dashboard-eyebrow">THE AI COURTROOM · STUDENT RECORD</p><h1>Your <em>dashboard.</em></h1><p>Loading your saved courtroom record…</p></div></section>
+        <section className="dashboard-hero mahogany-section"><SiteNav /><div className="dashboard-hero-inner"><p className="dashboard-eyebrow"><AcquittalBrand /> · STUDENT RECORD</p><h1>Your <em>dashboard.</em></h1><p>Loading your saved courtroom record…</p></div></section>
       </main>
     );
   }
@@ -226,7 +227,7 @@ export default function StudentDashboard() {
             <span>YOUR CURRENT RANK</span>
             <strong>{String(dashboard.rankLevel).padStart(2, "0")}</strong>
             <b>{dashboard.rankName}</b>
-            <small>THE AI COURTROOM</small>
+            <small><AcquittalBrand /></small>
           </div>
         </div>
       </section>
@@ -314,7 +315,7 @@ export default function StudentDashboard() {
               <div className="dashboard-storage-note"><span>◈</span><p>Progress is currently saved in this browser only. It won't sync across devices until the site adds accounts and a database.</p></div>
             </aside>
           </div>
-          <div className="dashboard-bottom-links"><Link href="/">← Home</Link><span>THE AI COURTROOM · STUDENT RECORD</span><Link href="/games">All games →</Link></div>
+          <div className="dashboard-bottom-links"><Link href="/">← Home</Link><span><AcquittalBrand /> · STUDENT RECORD</span><Link href="/games">All games →</Link></div>
         </div>
       </section>
       <Footer />

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion, useReducedMotion } from "motion/react";
+import AcquittalBrand from "@/components/AcquittalBrand";
 
 export default function Footer() {
   const reduceMotion = useReducedMotion();
@@ -22,11 +23,11 @@ export default function Footer() {
         viewport={{ once: false }}
         transition={{ duration: reduceMotion ? 0 : 0.8, ease: "easeOut" }}
       />
-      <Link href="/" className="footer-brand">The AI <strong>Courtroom</strong></Link>
+      <Link href="/" className="footer-brand"><AcquittalBrand /></Link>
       <nav className="footer-links" aria-label="Footer navigation">
         <Link href="/#courts">Explore courts</Link>
         <Link href="/information">Information</Link>
-        <Link href="/games">All games</Link>
+        <Link href="/games">Courts</Link>
         <Link href="/profile">Dashboard</Link>
       </nav>
     </motion.footer>

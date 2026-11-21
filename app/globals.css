@@ -68,6 +68,11 @@ body {
   background: var(--ivory);
   color: var(--ink);
   font-family: var(--font-sans);
+  line-height: 1.6;
+}
+
+p {
+  text-wrap: pretty;
 }
 
 a {
@@ -117,10 +122,18 @@ a {
   letter-spacing: -0.035em;
 }
 
-.site-brand strong,
-.footer-brand strong {
+.site-brand .acquittal-brand,
+.footer-brand .acquittal-brand {
   color: #b7cba8;
   font-weight: 650;
+}
+
+.acquittal-brand-emphasis {
+  font-weight: 850;
+}
+
+.acquittal-brand {
+  white-space: nowrap;
 }
 
 .brand-mark {
@@ -904,7 +917,7 @@ a:hover .text-link span {
   color: var(--ivory);
 }
 
-.site-footer .footer-brand strong {
+.site-footer .footer-brand .acquittal-brand {
   color: #b9c9a8;
 }
 
@@ -1301,6 +1314,37 @@ a:hover .text-link span {
   text-underline-offset: 3px;
 }
 
+.image-sources {
+  margin-top: 2rem;
+  border-top: 1px solid var(--rule);
+  padding-top: 1.5rem;
+}
+
+.image-sources h2 {
+  margin: 0 0 1rem;
+  color: var(--ink);
+  font-size: 1.4rem;
+}
+
+.image-source-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem 2rem;
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.image-source-list li {
+  color: var(--muted-ink);
+  line-height: 1.6;
+}
+
+.image-source-list a {
+  color: var(--forest);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 :focus-visible {
   outline: 2px solid #a9bf98;
   outline-offset: 4px;
@@ -1502,6 +1546,10 @@ a:hover .text-link span {
   }
 
   .information-skills {
+    grid-template-columns: 1fr;
+  }
+
+  .image-source-list {
     grid-template-columns: 1fr;
   }
 

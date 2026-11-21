@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { courts } from "@/lib/courts";
+import AcquittalBrand from "@/components/AcquittalBrand";
 import CourtArtwork from "./CourtArtwork";
 import Footer from "./Footer";
 import RevealOnScroll from "./RevealOnScroll";
@@ -65,16 +66,15 @@ export default function CourtsHome() {
             />
           </div>
           <div className="intro-copy">
-            <h2>AI is on the case.<span>You are the judge.</span></h2>
+            <h2>AI is on the case. <span>You are the judge.</span></h2>
             <p>
-              The AI Courtroom turns big questions about artificial
-              intelligence into quick, hands-on cases. Practice spotting
-              unsupported claims, writing clearer prompts, and weighing the
-              human impact of AI decisions.
+              <AcquittalBrand /> is an interactive AI learning portal designed for
+              high school students. It turns questions about artificial
+              intelligence into an engaging, hands-on experience.
             </p>
             <p>
-              Explore each case at your own pace. No legal background needed:
-              just curiosity and a willingness to ask one more question.
+              Explore the fundamentals of AI, discover practical tools, and
+              learn how to use AI effectively and ethically.
             </p>
           </div>
         </RevealOnScroll>
@@ -82,8 +82,8 @@ export default function CourtsHome() {
 
       <section id="courts" className="home-courts mahogany-section">
         <div className="section-heading">
-          <h2>Three cases. <span>One sharper mind.</span></h2>
-          <p>Pick a challenge and put your AI judgment to work.</p>
+          <h2>Three cases. <span>Three choices.</span></h2>
+          <p>Step into the court</p>
         </div>
         <RevealOnScroll className="home-court-grid">
           {courts.map((court) => (
@@ -111,16 +111,13 @@ export default function CourtsHome() {
       <section className="home-information ivory-section">
         <RevealOnScroll className="home-information-inner">
           <div className="home-information-copy">
-            <p className="eyebrow">A useful habit, not a shortcut</p>
-            <h2>Stay curious.<span>Check the record.</span></h2>
+            <p className="eyebrow">How it works</p>
+            <h2>Learn with AI.<span>Think for yourself.</span></h2>
             <p>
-              AI can be a helpful starting point, but it does not replace
-              evidence or human judgment. These short cases give you a practical
-              way to question what you read, improve what you ask, and think
-              about who a decision affects.
+              AI has changed our everyday lives, but it shouldn’t be replacing our own human judgement. These cases give you a practical way to improve your judgement in this new world that we live in.
             </p>
             <Link href="/information" className="button button-green">
-              How the courtroom works <span aria-hidden="true">→</span>
+              Learn more <span aria-hidden="true">→</span>
             </Link>
           </div>
           <figure className="information-photo">
@@ -153,8 +150,9 @@ export default function CourtsHome() {
 
       <section id="voices" className="home-voices ivory-section">
         <div className="voices-heading">
-          <h2>Community <span>voices.</span></h2>
-          <p>Sample reflections from students exploring AI in the courtroom.</p>
+          <h2>Community <span>voices</span></h2>
+          <p>(Non factual information)</p>
+          <p>Reflections from prior students who’ve tried us out</p>
         </div>
         <RevealOnScroll className="voice-marquee">
           {reflectionRows.map((row, rowIndex) => (

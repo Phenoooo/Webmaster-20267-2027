@@ -6,6 +6,7 @@ import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useEffect, useMemo, useState } from "react";
 import Footer from "@/components/Footer";
 import SiteNav from "@/components/SiteNav";
+import AcquittalBrand from "@/components/AcquittalBrand";
 import { ethicsCases, type EthicsArgumentId } from "../lib/ethicsCases";
 import {
   getStudentProgress,
@@ -103,7 +104,7 @@ export default function EthicsGame() {
         <SiteNav />
         <div className="ec-page-heading">
           <div className="ec-heading-copy">
-            <p className="ec-eyebrow"><span /> THE AI COURTROOM <b>/</b> ETHICS DIVISION</p>
+            <p className="ec-eyebrow"><span /> <AcquittalBrand /> <b>/</b> ETHICS DIVISION</p>
             <h1>Ethics <em>Court.</em></h1>
             <p>Six dilemmas. Two arguments. Decide which lawyer puts people, fairness, and responsibility first.</p>
           </div>
@@ -231,7 +232,7 @@ export default function EthicsGame() {
             ) : null}
           </AnimatePresence>
 
-          <div className="ec-bottom-nav"><Link href="/">← Back home</Link><span>THE AI COURTROOM · ETHICS DIVISION</span><Link href="/games">All games →</Link></div>
+          <div className="ec-bottom-nav"><Link href="/">← Back home</Link><span><AcquittalBrand /> · ETHICS DIVISION</span><Link href="/games">All games →</Link></div>
         </div>
       </section>
       <Footer />

@@ -15,7 +15,7 @@ const lora = Lora({
 });
 
 export const metadata: Metadata = {
-  title: "The AI Courtroom",
+  title: "Acquittal",
   description:
     "Practice asking better questions, checking AI answers, and making thoughtful choices through three courtroom games.",
 };
