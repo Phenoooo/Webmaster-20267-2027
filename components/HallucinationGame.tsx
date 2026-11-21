@@ -127,24 +127,13 @@ function shuffleArguments(): ArgumentId[] {
     : ["supported", "unsupported"];
 }
 
-const counselNamePool = [
-  "Avery Cole",
-  "Jordan Reyes",
-  "Morgan Ellis",
-  "Riley Bennett",
-  "Taylor Brooks",
-  "Casey Morgan",
-  "Drew Parker",
-  "Sasha Quinn",
-];
+const maleCounselNames = ["Drew Parker", "Ethan Cole", "Marcus Reed", "David Brooks"];
+const femaleCounselNames = ["Sasha Quinn", "Emily Reyes", "Maya Bennett", "Olivia Morgan"];
 
-function shuffleCounselNames(): [string, string] {
-  const shuffled = [...counselNamePool];
-  for (let index = shuffled.length - 1; index > 0; index -= 1) {
-    const swapIndex = Math.floor(Math.random() * (index + 1));
-    [shuffled[index], shuffled[swapIndex]] = [shuffled[swapIndex], shuffled[index]];
-  }
-  return [shuffled[0], shuffled[1]];
+function chooseCounselNames(): [string, string] {
+  const maleName = maleCounselNames[Math.floor(Math.random() * maleCounselNames.length)];
+  const femaleName = femaleCounselNames[Math.floor(Math.random() * femaleCounselNames.length)];
+  return [maleName, femaleName];
 }
 
 function getArgument(
@@ -163,8 +152,8 @@ export default function HallucinationGame() {
     "supported",
   ]);
   const [counselNames, setCounselNames] = useState<[string, string]>([
-    "Avery Cole",
-    "Jordan Reyes",
+    "Drew Parker",
+    "Sasha Quinn",
   ]);
   const [selectedArgument, setSelectedArgument] = useState<ArgumentId | null>(
     null,
@@ -197,7 +186,7 @@ export default function HallucinationGame() {
 
   function beginHearing() {
     setArgumentOrder(shuffleArguments());
-    setCounselNames(shuffleCounselNames());
+    setCounselNames(chooseCounselNames());
     setSelectedArgument(null);
     setStage("arguments");
   }
@@ -255,10 +244,6 @@ export default function HallucinationGame() {
             <h1>
               Hallucination <em>Court.</em>
             </h1>
-            <p className="hc-page-intro">
-              Six cases. Six opportunities to test the evidence. Decide which lawyer
-              has made the argument the sources can actually support.
-            </p>
           </div>
           <div className="hc-case-stamp" aria-label={`Level ${currentLevel}, one round`}>
             <span className="hc-stamp-label">NOW HEARING</span>
@@ -288,10 +273,8 @@ export default function HallucinationGame() {
           <section className="hc-level-selector" aria-label="Choose a courtroom level">
             <div className="hc-level-selector-heading">
               <div>
-                <p className="hc-section-kicker">YOUR CASE FILES</p>
                 <h2>Six levels of <em>verification.</em></h2>
               </div>
-              <p>Complete a case to unlock the next one. You can return to any level you have already opened.</p>
             </div>
             <div className="hc-level-list">
               {hallucinationCases.map((caseItem) => {
@@ -313,7 +296,6 @@ export default function HallucinationGame() {
                     </span>
                     <span className="hc-level-copy">
                       <strong>{caseItem.title.replace("The ", "")}</strong>
-                      <small>{caseItem.difficulty}</small>
                     </span>
                     {isCurrent ? <span className="hc-level-current-mark">CURRENT</span> : null}
                   </button>
@@ -342,7 +324,7 @@ export default function HallucinationGame() {
             </div>
             <div className={`hc-courtroom-scene ${stage !== "brief" ? "is-active" : ""}`}>
               <Image
-                src="/hallucination-courtroom-scene.png"
+                src="/realActOneThree.png"
                 alt="A courtroom viewed from the judge's seat, with two lawyers facing the bench from opposite lecterns."
                 fill
                 priority
@@ -396,7 +378,7 @@ export default function HallucinationGame() {
                 >
                   <span className="hc-call-icon" aria-hidden="true">§</span>
                   <p>Two lawyers are ready to make their case.</p>
-                  <button className="hc-button hc-button-gold" type="button" onClick={beginHearing}>
+                  <button className="hc-button hc-button-green" type="button" onClick={beginHearing}>
                     Call the court to order <span aria-hidden="true">→</span>
                   </button>
                 </motion.div>
@@ -408,7 +390,7 @@ export default function HallucinationGame() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: reduceMotion ? 0 : 0.38, delay: reduceMotion ? 0 : 0.8 }}
                 >
-                  <button className="hc-button hc-button-gold" type="button" onClick={revealEvidence}>
+                  <button className="hc-button hc-button-green" type="button" onClick={revealEvidence}>
                     Examine the exhibits <span aria-hidden="true">→</span>
                   </button>
                 </motion.div>
@@ -434,10 +416,8 @@ export default function HallucinationGame() {
               >
                 <div className="hc-evidence-heading">
                   <div>
-                    <p className="hc-section-kicker">THE RECORD</p>
                     <h3 id="hc-evidence-title">Read the <em>evidence.</em></h3>
                   </div>
-                  <p>Open the original sources. Look for the details, conditions, and qualifications that each lawyer uses—or leaves out.</p>
                 </div>
                 <div className="hc-evidence-grid">
                   {orderedArguments.map((argument, index) => (
@@ -520,7 +500,7 @@ export default function HallucinationGame() {
                           Replay this case <span aria-hidden="true">↻</span>
                         </button>
                         {currentLevel < totalLevels && highestUnlockedLevel > currentLevel ? (
-                          <button className="hc-button hc-button-gold" type="button" onClick={goToNextLevel}>
+                          <button className="hc-button hc-button-green" type="button" onClick={goToNextLevel}>
                             Next level <span aria-hidden="true">→</span>
                           </button>
                         ) : null}
